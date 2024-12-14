@@ -1,0 +1,131 @@
+# Projektaufgabe: Weiterentwicklung der Laravel "Hello World" App
+
+https://childish-sulfur-e6d.notion.site/Projektaufgabe-Weiterentwicklung-der-Laravel-Hello-World-App-1292dd6fb67b806a958dc67e19d7d914
+
+## Einführung
+
+In dieser Projektaufgabe werden Sie die bestehende Laravel "Hello World" Anwendung um neue Funktionen erweitern und verbessern. Das Ziel ist es, Ihre Fähigkeiten in der Entwicklung von Laravel-Anwendungen zu vertiefen und moderne Webentwicklungspraktiken anzuwenden.
+
+## Aufgabenstellung
+
+1. **Benutzerverwaltung und Authentifizierung**
+    
+    Implementieren Sie ein Benutzerverwaltungssystem mit Registrierung, Anmeldung und Abmeldung.
+    
+    - Erstellen Sie einen `UserController` mit den Methoden `register()`, `login()` und `logout()`.
+    - Erstellen Sie die entsprechenden Routen in `routes/web.php`:
+        
+        ```php
+        Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('register');
+        Route::post('/register', [UserController::class, 'register']);
+        Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
+        Route::post('/login', [UserController::class, 'login']);
+        Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+        
+        ```
+        
+    - Erstellen Sie die Blade-Templates für die Registrierungs- und Anmeldeformulare.
+    - Nutzen Sie die eingebauten Laravel-Funktionen wie `Auth::attempt()`, `Auth::login()` und `Auth::logout()`.
+2. **Nachrichten bearbeiten und löschen**
+    
+    Fügen Sie die Möglichkeit hinzu, dass Benutzer ihre eigenen Nachrichten bearbeiten und löschen können.
+    
+    - Erweitern Sie den `SimpleController` um die Methoden `edit()`, `update()` und `destroy()`.
+    - Fügen Sie die entsprechenden Routen hinzu:
+        
+        ```php
+        Route::get('/messages/{message}/edit', [SimpleController::class, 'edit'])->name('messages.edit');
+        Route::put('/messages/{message}', [SimpleController::class, 'update'])->name('messages.update');
+        Route::delete('/messages/{message}', [SimpleController::class, 'destroy'])->name('messages.destroy');
+        
+        ```
+        
+    - Erstellen Sie Blade-Templates für das Bearbeiten von Nachrichten.
+    - Stellen Sie sicher, dass nur der Ersteller einer Nachricht diese bearbeiten oder löschen kann.
+3. **Kategorien für Nachrichten**
+    
+    Implementieren Sie ein Kategoriensystem für Nachrichten.
+    
+    - Erstellen Sie ein `Category`Model und eine entsprechende Migration.
+    - Passen Sie das `Message`Model und die Migration an, um eine Beziehung zwischen Nachrichten und Kategorien herzustellen.
+    - Erweitern Sie den `SimpleController` um Methoden zum Erstellen, Anzeigen und Verwalten von Kategorien.
+    - Erstellen Sie die notwendigen Blade-Templates für die Kategorieverwaltung.
+4. **Suchfunktion**
+    
+    Fügen Sie eine Suchfunktion hinzu, mit der Benutzer nach Nachrichten suchen können.
+    
+    - Erweitern Sie den `SimpleController` um eine `search()`Methode.
+    - Erstellen Sie ein Suchformular in der Navigation oder Seitenleiste.
+    - Verwenden Sie Laravel's Query Builder oder Eloquent's `where()`Methode, um die Suche durchzuführen.
+    - Zeigen Sie die Suchergebnisse in einer eigenen Blade-Ansicht an.
+
+## Hilfreiche Funktionen und Ressourcen
+
+- `php artisan make:controller`: Erstellt einen neuen Controller
+- `php artisan make:model`: Erstellt ein neues Model
+- `php artisan make:migration`: Erstellt eine neue Datenbankmigration
+- `php artisan migrate`: Führt ausstehende Migrationen aus
+- `php artisan route:list`: Zeigt eine Liste aller registrierten Routen an
+- Laravel Dokumentation: https://laravel.com/docs
+- Laravel Authentication: https://laravel.com/docs/authentication
+- Laravel Eloquent Relationships: https://laravel.com/docs/eloquent-relationships
+- Laravel Blade Templates: https://laravel.com/docs/blade
+
+## Zielarchitektur
+
+### Benutzerverwaltung und Authentifizierung
+
+```mermaid
+graph LR
+    A[Benutzer] --> B[LoginController]
+    A --> C[RegistrationController]
+    B --> D{User Model}
+    C --> D
+    D --> E[(Datenbank)]
+
+```
+
+### Nachrichten bearbeiten und löschen
+
+```mermaid
+graph LR
+    A[Benutzer] --> B[SimpleController]
+    B --> C{Message Model}
+    C --> D[(Datenbank)]
+
+```
+
+### Kategorien für Nachrichten
+
+```mermaid
+graph LR
+    A[Benutzer] --> B[SimpleController]
+    B --> C{Message Model}
+    B --> D{Category Model}
+    C --> E[(Datenbank)]
+    D --> E
+
+```
+
+### Suchfunktion
+
+```mermaid
+graph LR
+    A[Benutzer] --> B[SimpleController]
+    B --> C{Message Model}
+    C --> D[(Datenbank)]
+    B --> E[Suchergebnisse]
+
+```
+
+## Abgabe
+
+1. Erstellen Sie ein Repository auf GitHub für Ihr Projekt.
+2. Committen Sie Ihren Code regelmäßig mit aussagekräftigen Commit-Nachrichten.
+3. Stellen Sie sicher, dass Ihr Projekt fehlerfrei ausgeführt werden kann.
+4. Schreiben Sie eine `README.md` Datei, die Ihr Projekt beschreibt und Anweisungen zur Installation und Ausführung enthält.
+5. Geben Sie die URL zu Ihrem GitHub-Repository bis zum angegebenen Datum ab.
+
+Viel Erfolg und Spaß bei der Weiterentwicklung der Laravel-Anwendung!
+
+---

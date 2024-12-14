@@ -1,0 +1,69 @@
+# open the console with ctrl + J
+
+mkdir Coding_with_Othman
+cd .\Coding_with_Othman\
+mkdir CodeBase2Github   
+start .
+echo "" > index.html
+echo "" > script.js
+echo "" > styles.css
+
+# Github userdaten ( email muss gleich sein fuer token)
+PS C:\Users\xxx> git config --global user.name "yourname"
+PS C:\Users\xxx> git config --global user.email "yourmail@gmail.com"
+
+# Zweig auf main umbenennen ( ehemals master) =>  mehr it bezogen nach kauf durch microsoft
+git config --global init.defaultBranch main
+
+PS C:\Users\xxx\Documents\code-projects\Morphos\Coding_with_Othman\CodeBase2Github> git init
+Initialized empty Git repository in C:/Users/xxx/Documents/code-projects/Morphos/Coding_with_Othman/CodeBase2Github/.git/
+
+# add all files to the zweig/branch
+PS C:\Users\xx\Documents\code-projects\Morphos\Coding_with_Othman\CodeBase2Github> git add .
+
+
+# commit it to the branch
+
+git commit -m "test commit repo" 
+[main (root-commit) bd8e7a3] test commit repo
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 index.html
+ create mode 100644 script.js
+ create mode 100644 styles.css
+PS C:\Users\xxxx\Documents\code-projects\Morphos\Coding_with_Othman\CodeBase2Github> 
+
+
+# copy the repository url from github:
+https://github.com/xxx/testrepo.git
+
+# push it to the main repo of GitHub:
+
+git push -f githubrepo main
+
+
+# create a mask for the repository where the code should be published:
+
+git remote add testrepo https://github.com/xxx/testrepo.git
+
+
+# chek if repo has been added
+git remote -v           
+testrepo        https://github.com/xxx/testrepo.git (fetch)
+testrepo        https://github.com/xxx/testrepo.git (push)
+
+
+# puush it to GitHub:
+
+git push -f testrepo main
+info: please complete authentication in your browser...
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 242 bytes | 121.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/xxxx/xxx.git
+ + 3250c1c...bd8e7a3 main -> main (forced update)
+
+
+you done!
